@@ -1,0 +1,13 @@
+[project]
+name = "snippbot"
+version = "0.0.0"
+description = "Telegram bot 'SnippBot' with FastAPI"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "aiogram>=3.23.0",
+    "fastapi>=0.127.0",
+    "python-dotenv>=1.2.1",
+    "sqlalchemy>=2.0.45",
+    "unicorn>=2.1.4",
+]
