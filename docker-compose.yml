@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: snippbot
+      POSTGRES_USER: snippbot
+      POSTGRES_PASSWORD: snippbot
+    volumes:
+      - pg:/var/lib/postgresql/data
+    networks:
+      - snippnet
+
+  backend:
+    build:
+      context: .
+      dockerfile: DockerFile
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://snippbot:snippbot@db:5432/snippbot
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+    depends_on:
+      - db
+    networks:
+      - snippnet
+
+volumes:
+  pg:
+
+networks:
+  snippnet:
