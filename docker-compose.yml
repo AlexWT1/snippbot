@@ -2,9 +2,9 @@ services:
   db:
     image: postgres:16
     environment:
-      POSTGRES_DB: snippbot
-      POSTGRES_USER: snippbot
-      POSTGRES_PASSWORD: snippbot
+      POSTGRES_DB: ${DATABASE_DB}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
     volumes:
       - pg:/var/lib/postgresql/data
     networks:
